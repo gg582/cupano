@@ -1,0 +1,13 @@
+{
+  "name": "cupano",
+  "version": "0.2.0",
+  "private": true,
+  "license": "GPL-2.0-only",
+  "description": "Coffee bean profile & multilingual sensory analysis web extension",
+  "scripts": {
+    "build": "make"
+  },
+  "devDependencies": {
+    "webextension-polyfill": "0.12.0"
+  }
+}

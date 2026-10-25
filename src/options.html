@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>cupano settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1>☕ cupano</h1>
+      <p class="lede">Bring your own key. It stays in this browser (<code>storage.local</code>) and is only ever sent
+        to the provider you pick.</p>
+    </header>
+
+    <form id="settings-form" autocomplete="off" novalidate>
+      <fieldset class="providers">
+        <legend>Active provider</legend>
+        <label class="choice">
+          <input type="radio" name="activeProvider" value="gemini" checked>
+          <span><strong>Google Gemini</strong><small>Google Search grounding</small></span>
+        </label>
+        <label class="choice">
+          <input type="radio" name="activeProvider" value="openai">
+          <span><strong>OpenAI</strong><small>Responses API web search</small></span>
+        </label>
+      </fieldset>
+
+      <section class="card" data-provider="gemini">
+        <h2>Google Gemini</h2>
+        <label for="gemini-key">API key</label>
+        <div class="secret">
+          <input id="gemini-key" name="gemini.apiKey" type="password" spellcheck="false" placeholder="AIza…">
+          <button type="button" class="reveal" data-target="gemini-key" aria-pressed="false">Show</button>
+        </div>
+        <label for="gemini-model">Model</label>
+        <div class="secret">
+          <input id="gemini-model" name="gemini.model" type="text" spellcheck="false" placeholder="gemini-2.5-flash"
+                 list="gemini-models">
+          <button type="button" class="refresh-models" data-provider="gemini">Load models</button>
+        </div>
+        <datalist id="gemini-models"></datalist>
+        <small class="model-status" data-provider="gemini" role="status" aria-live="polite"></small>
+      </section>
+
+      <section class="card" data-provider="openai">
+        <h2>OpenAI</h2>
+        <label for="openai-key">API key</label>
+        <div class="secret">
+          <input id="openai-key" name="openai.apiKey" type="password" spellcheck="false" placeholder="sk-…">
+          <button type="button" class="reveal" data-target="openai-key" aria-pressed="false">Show</button>
+        </div>
+        <label for="openai-model">Model</label>
+        <div class="secret">
+          <input id="openai-model" name="openai.model" type="text" spellcheck="false" placeholder="gpt-5-mini"
+                 list="openai-models">
+          <button type="button" class="refresh-models" data-provider="openai">Load models</button>
+        </div>
+        <datalist id="openai-models"></datalist>
+        <small class="model-status" data-provider="openai" role="status" aria-live="polite"></small>
+      </section>
+
+      <div class="actions">
+        <button type="submit" class="primary">Save</button>
+        <button type="button" id="clear-button" class="danger">Clear all keys</button>
+        <output id="status" role="status" aria-live="polite"></output>
+      </div>
+    </form>
+  </main>
+
+  <script src="../vendor/browser-polyfill.min.js"></script>
+  <script type="module" src="options.js"></script>
+</body>
+</html>

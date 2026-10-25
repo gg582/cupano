@@ -1,0 +1,61 @@
+{
+  "manifest_version": 3,
+  "name": "cupano",
+  "short_name": "cupano",
+  "version": "0.2.0",
+  "description": "Cross-references coffee bean tasting notes across six regional coffee cultures and distills a canonical sensory profile.",
+  "author": "cupano",
+  "minimum_chrome_version": "121",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "cupano@cupano.dev",
+      "strict_min_version": "142.0",
+      "data_collection_permissions": {
+        "required": [
+          "websiteContent"
+        ]
+      }
+    }
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://generativelanguage.googleapis.com/*",
+    "https://api.openai.com/*",
+    "https://api.country.is/*",
+    "https://get.geojs.io/*"
+  ],
+  "background": {
+    "service_worker": "src/background/background.js",
+    "scripts": [
+      "src/background/background.js"
+    ],
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Analyze this coffee with cupano",
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "options_ui": {
+    "page": "src/options.html",
+    "open_in_tab": true
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  }
+}

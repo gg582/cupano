@@ -1,0 +1,6 @@
+node_modules/
+wasm/
+vendor/
+publish/
+dist/
+.DS_Store
