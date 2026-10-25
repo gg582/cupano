@@ -24,7 +24,7 @@ OUT="$ROOT/publish"
 # Files that make up the installable extension (no C++ sources, no tooling).
 EXTENSION_FILES=(icons src/background src/popup src/shared src/options.html src/options.js src/options.css wasm vendor)
 # Files a reviewer needs to rebuild the extension from source.
-SOURCE_FILES=(manifest.json icons src Makefile package.json package-lock.json publish.sh)
+SOURCE_FILES=(manifest.json icons src Makefile package.json package-lock.json publish.sh LICENSE README.md README.ko.md PRIVACY.md .gitignore)
 
 step() { printf '\n==> %s\n' "$*"; }
 fail() { printf 'publish.sh: %s\n' "$*" >&2; exit 1; }
